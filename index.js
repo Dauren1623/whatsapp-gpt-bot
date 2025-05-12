@@ -42,3 +42,9 @@ async function startBot() {
 }
 
 startBot();
+// Фиктивный HTTP-сервер, чтобы Render не ругался на порты
+const http = require('http');
+http.createServer((_, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot is running!\n');
+}).listen(process.env.PORT || 3000);
